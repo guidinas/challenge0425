@@ -1,4 +1,4 @@
-package io.reflectoring.enums;
+package io.device.enums;
 
 public enum State {
     INACTIVE,
