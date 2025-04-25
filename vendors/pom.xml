@@ -12,7 +12,6 @@
     <artifactId>vendors</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>postgres</module>
     </modules>
 
     <properties>
