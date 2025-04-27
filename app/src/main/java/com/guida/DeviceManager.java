@@ -1,12 +1,12 @@
-package io.reflectoring.api;
+package com.guida;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
-@SpringBootApplication
-public class Main {
+@SpringBootApplication (scanBasePackages =  {"com.guida"} )
+public class DeviceManager {
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        SpringApplication.run(DeviceManager.class, args);
     }
 }

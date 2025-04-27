@@ -1,4 +1,4 @@
-package io.device.enums;
+package com.guida.enums;
 
 public enum State {
     INACTIVE,
