@@ -14,7 +14,7 @@ public class DeviceInUseUpdateValidation implements DeviceUpdateValidator {
                 (!Objects.equals(deviceToUpdate.getName(), deviceFromDB.getName()) ||
                         !Objects.equals(deviceToUpdate.getBrand(), deviceFromDB.getBrand())))
                         {
-            throw new IllegalArgumentException("Device in use cannot be updated");
+                            throw new IllegalArgumentException("Device in use cannot be updated");
         }
     }
 }

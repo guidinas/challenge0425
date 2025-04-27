@@ -19,7 +19,7 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>io.reflectoring</groupId>
+            <groupId>com.guida</groupId>
             <artifactId>core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>

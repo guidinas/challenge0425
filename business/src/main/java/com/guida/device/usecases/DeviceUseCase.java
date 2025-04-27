@@ -2,10 +2,11 @@ package com.guida.device.usecases;
 
 import com.guida.converters.CreateDeviceRequestToDevice;
 import com.guida.converters.DeviceToDeviceRequestResponse;
+import com.guida.device.postgres.DeviceRepository;
 import com.guida.device.validators.DeviceUpdateValidator;
+import com.guida.enums.State;
 import com.guida.models.CreateDeviceRequest;
 import com.guida.models.Device;
-import com.guida.device.postgres.DeviceRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -56,7 +57,7 @@ public class DeviceUseCase {
                 return ResponseEntity.badRequest()
                         .body(e.getMessage());
             }
-           return ResponseEntity.ok(deviceRepository.save(deviceToCreate));
+            return ResponseEntity.ok(deviceRepository.save(deviceToCreate));
         }
     }
 
@@ -78,13 +79,13 @@ public class DeviceUseCase {
     }
 
     public ResponseEntity<Object> getAllDevices() {
-            final List<Device> allDevices = deviceRepository.findAll();
-            if(allDevices.isEmpty()){
-                return ResponseEntity.badRequest()
-                        .body("No devices found");
-            }else {
-                return ResponseEntity.ok(allDevices);
-            }
+        final List<Device> allDevices = deviceRepository.findAll();
+        if(allDevices.isEmpty()){
+            return ResponseEntity.badRequest()
+                    .body("No devices found");
+        }else {
+            return ResponseEntity.ok(allDevices);
+        }
     }
 
     public ResponseEntity<Object> getDevicesByBrand(String brand) {
@@ -104,6 +105,27 @@ public class DeviceUseCase {
                     .body("No devices found");
         }else {
             return ResponseEntity.ok(allDevices.stream().filter(device -> state.equalsIgnoreCase(device.getState().name())));
+        }
+    }
+
+    public ResponseEntity<Object> deleteDevice(String id) {
+        try {
+            final Device deviceFound = deviceRepository.findById(UUID.fromString(id));
+
+            if (deviceFound == null) {
+                return ResponseEntity.badRequest()
+                        .body("Device doesn't exist");
+            } else if (deviceFound.getState().equals(State.IN_USE)) {
+                return ResponseEntity.badRequest()
+                        .body("Device in use cannot be deleted");
+            } else {
+                deviceRepository.delete(deviceFound);
+                return ResponseEntity.ok()
+                        .body("Device deleted successfully");
+            }
+        }catch (IllegalArgumentException e){
+            return ResponseEntity.badRequest()
+                    .body("Invalid UUID");
         }
     }
 }

@@ -8,4 +8,11 @@ coding challenge Guida Dias: 04/25
 * Run Migration Application with ActiveProfile Local
 * Run app/DeviceManager with ActiveProfile Local
 
-# Running 
+# Improvements: 
+* I wouldn't rely so heavily on JPA and would create a repository with all the queries in order to have more control over
+how we are getting all the data. And with more complex queries it becomes a necessity anyway.
+* Using human made Queries makes it way  more important to have Integration Tests.
+* I would Create a ErrorHandler for the Controller in order to remove the tries and catches from the use cases.
+* we can have Tags configuration Tests to guarantee that no one would accidentally change a config. And to make it more intentional for when it's needed.
+
+# Possible Bugs:
