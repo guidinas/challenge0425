@@ -103,7 +103,7 @@ public class DeviceUseCase {
             return ResponseEntity.badRequest()
                     .body("No devices found");
         }else {
-            return ResponseEntity.ok(allDevices.stream().filter(device -> state.equalsIgnoreCase(device.getState().toString())));
+            return ResponseEntity.ok(allDevices.stream().filter(device -> state.equalsIgnoreCase(device.getState().name())));
         }
     }
 }

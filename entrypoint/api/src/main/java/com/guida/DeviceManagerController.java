@@ -36,18 +36,18 @@ public class DeviceManagerController {
         return deviceUseCase.getAllDevices();
     }
 
-    @GetMapping("/get/brand")
+    @GetMapping("/get-filter/brand")
     public ResponseEntity<Object> getDevicesByBrand(
             @RequestBody CreateDeviceRequest createDeviceRequest
     ){
         return deviceUseCase.getDevicesByBrand(createDeviceRequest.getBrand());
     }
 
-    @GetMapping("/get/state")
+    @GetMapping("/get-filter/state")
     public ResponseEntity<Object> getDevicesByState(
             @RequestBody CreateDeviceRequest createDeviceRequest
     ){
-        return deviceUseCase.getDevicesByBrand(createDeviceRequest.getState().toString());
+        return deviceUseCase.getDevicesByState(createDeviceRequest.getState().name());
     }
 
 }
