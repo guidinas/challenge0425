@@ -1,14 +1,9 @@
 spring:
   datasource:
-    driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/device-manager
     username: postgres
-    password: roosst
-  jpa:
-    database: postgresql
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+    password: root
+
   flyway:
     enabled: true
     locations: classpath:db/migration

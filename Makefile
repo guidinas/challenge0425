@@ -13,5 +13,5 @@ create-infra-test: ## Run this command to create the infrastructure to run the i
 	docker-compose -f local/docker-compose-test.yml up -d
 
 remove-infra: ## Run this command to delete the infrastructure
-	docker stop postgres zookeeper kafka kafka-schema-registry zookeeper-secondary kafka-secondary kafka-schema-registry-secondary redpanda-primary redpanda-secondary redis
-	docker rm postgres zookeeper kafka kafka-schema-registry zookeeper-secondary kafka-secondary kafka-schema-registry-secondary redpanda-primary redpanda-secondary redis
+	docker stop postgres
+	docker rm postgres
