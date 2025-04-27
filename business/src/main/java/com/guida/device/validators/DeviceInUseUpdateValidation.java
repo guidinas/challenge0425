@@ -11,8 +11,8 @@ public class DeviceInUseUpdateValidation implements DeviceUpdateValidator {
     @Override
     public void validate(Device deviceToUpdate, Device deviceFromDB) {
         if(deviceFromDB.getState().equals(State.IN_USE)  &&
-                (!Objects.equals(deviceToUpdate.getName(), deviceFromDB.getName()) ||
-                        !Objects.equals(deviceToUpdate.getBrand(), deviceFromDB.getBrand())))
+                (!deviceToUpdate.getName().equals(deviceFromDB.getName()) ||
+                        !deviceToUpdate.getBrand().equals(deviceFromDB.getBrand())))
                         {
                             throw new IllegalArgumentException("Device in use cannot be updated");
         }
